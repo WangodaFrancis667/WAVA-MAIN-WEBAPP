@@ -52,6 +52,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "configurations.urls"
+LOGIN_URL = "/login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+TEMPLATE_DIR = BASE_DIR / "templates"
+
 
 TEMPLATES = [
     {
@@ -120,16 +125,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# When using @login_required without a custom LOGIN_URL, Django defaults
-# to '/accounts/login/'. Your `accounts.urls` exposes the login view at
-# '/login/' (see `accounts/urls.py`). Set LOGIN_URL so redirects point to
-# the existing view.
-LOGIN_URL = "/login/"
-# Where to redirect after a successful login by default
-LOGIN_REDIRECT_URL = "/"
